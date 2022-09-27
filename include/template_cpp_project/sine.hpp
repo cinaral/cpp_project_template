@@ -1,6 +1,7 @@
 #ifndef SINE_HPP_CINARAL_220923_1711
 #define SINE_HPP_CINARAL_220923_1711
 
+#include "types.hpp"
 #include <cmath>
 
 #ifndef M_PI
@@ -9,13 +10,6 @@
 
 namespace template_cpp_project
 {
-using uint_t = unsigned long long int;
-#ifdef __USE_SINGLE_PRECISION__
-using real_t = float;
-#else
-using real_t = double;
-#endif
-
 //* generates a sine wave.
 //*
 //* inputs:
