@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.13)
+cmake_minimum_required(VERSION 3.19)
 
 project(
 	template_cpp_project
@@ -9,15 +9,14 @@ project(
 #dependencies
 Include(FetchContent)
 
-set(matrix_rw_VERSION 1.0.2) #* matrix_rw, used for testing
+set(matrix_rw_VERSION v1.0.2) #* matrix_rw, used for testing
 
 if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
 	FetchContent_Declare(
 		matrix_rw 
-		URL https://github.com/cinaral/matrix_rw/releases/download/v${matrix_rw_VERSION}/matrix_rw-src.zip
+		URL https://github.com/cinaral/matrix_rw/releases/download/${matrix_rw_VERSION}/matrix_rw-src.zip
 	)
 	FetchContent_MakeAvailable(matrix_rw)
-	set(matrix_rw_INCLUDE_DIR ${matrix_rw_SOURCE_DIR}/include)
 endif()
 
 
@@ -90,7 +89,7 @@ if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
 			target_include_directories(
 				${ELEMENT} PRIVATE 
 				${INCLUDE_DIR}
-				${matrix_rw_INCLUDE_DIR}
+				${matrix_rw_SOURCE_DIR}/include
 			)
 
 			add_test(
