@@ -1,8 +1,12 @@
 .cache/**
 build/**
+.vscode/.browse.c_cpp.db*
+.vscode/c_cpp_properties.json
+.vscode/launch.json
+.vscode/ipch
 
-# Created by https://www.toptal.com/developers/gitignore/api/git,c++,cmake,matlab,jupyternotebooks,visualstudiocode,c
-# Edit at https://www.toptal.com/developers/gitignore?templates=git,c++,cmake,matlab,jupyternotebooks,visualstudiocode,c
+# Created by https://www.toptal.com/developers/gitignore/api/c,git,c++,cmake,matlab,jupyternotebooks,visualstudiocode,platformio
+# Edit at https://www.toptal.com/developers/gitignore?templates=c,git,c++,cmake,matlab,jupyternotebooks,visualstudiocode,platformio
 
 ### C ###
 # Prerequisites
@@ -156,6 +160,13 @@ codegen/
 # Octave session info
 octave-workspace
 
+### PlatformIO ###
+.pioenvs
+.piolibdeps
+.clang_complete
+.gcc-flags.json
+.pio
+
 ### VisualStudioCode ###
 .vscode/*
 .vscode/settings.json
@@ -175,6 +186,4 @@ octave-workspace
 .history
 .ionide
 
-# Support for Project snippet scope
-
-# End of https://www.toptal.com/developers/gitignore/api/git,c++,cmake,matlab,jupyternotebooks,visualstudiocode,c
+# End of https://www.toptal.com/developers/gitignore/api/c,git,c++,cmake,matlab,jupyternotebooks,visualstudiocode,platformio

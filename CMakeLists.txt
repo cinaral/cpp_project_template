@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.19)
+cmake_minimum_required(VERSION 3.13)
 
 project(
 	template_cpp_project
@@ -6,7 +6,7 @@ project(
 	LANGUAGES CXX
 )
 
-#dependencies
+#* dependencies
 Include(FetchContent)
 
 set(matrix_rw_VERSION 1.0.2) #* matrix_rw, used for testing
