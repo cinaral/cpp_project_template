@@ -3,52 +3,53 @@
 		{
 			"label": "Configure",
 			"type": "shell",
-			"command": "./scripts/cmake/configure.sh",
+			"command": "./scripts/build/configure.sh",
 			"group": "build",
 		},
 		{
 			"label": "Clear",
 			"type": "shell",
-			"command": "./scripts/cmake/clear.sh",
+			"command": "./scripts/build/clear.sh",
+			"group": "build",
 		},
 		{
 			"label": "Clear and configure",
 			"type": "shell",	
-			"command": "./scripts/cmake/configure.sh",
+			"command": "./scripts/build/configure.sh",
+			"group": "build",
 			"dependsOn": [
                 "Clear"
             ],
-			"group": "build",
 		},
 		{
 			"label": "Build",
 			"type": "shell",
-			"command": "./scripts/cmake/build.sh",
 			"group": "build",
+			"command": "./scripts/build/build.sh",
 		},
 		{
 			"label": "Test",
 			"type": "shell",
-			"command": "./scripts/cmake/test.sh",
 			"group": "build",
+			"command": "./scripts/build/test.sh",
 		},
 		{
 			"label": "Build and test",
 			"type": "shell",
-			"command": "./scripts/cmake/test.sh",
+			"command": "./scripts/build/test.sh",
+			"group": "build",
 			"dependsOn": [
                 "Build"
             ],
-			"group": "build",
 		},
 	],
 	"version": "2.0.0",
 	"type": "shell",
 	"presentation": {
 		"echo": true,
-		"clear": false,
+		"clear": true,
 		"reveal": "always",
-		"focus": false,
+		"focus": true,
 		"panel": "shared",
 		"showReuseMessage": false
 	}

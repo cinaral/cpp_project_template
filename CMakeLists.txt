@@ -74,6 +74,10 @@ if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
 		add_compile_options(-D__USE_SINGLE_PRECISION__) #* use single precision floats
 	endif()
 
+	#***************#
+	#* Executables *#
+	#***************#
+
 	#***********#
 	#* Testing *#
 	#***********#
