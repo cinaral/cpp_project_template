@@ -29,7 +29,6 @@
 
 namespace template_cpp_project
 {
-using Uint_T = unsigned long long int;
 #ifdef __USE_SINGLE_PRECISION__
 using Real_T = float;
 #else

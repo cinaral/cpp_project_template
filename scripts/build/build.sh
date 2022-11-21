@@ -13,6 +13,6 @@ popd () {
 pushd "$(dirname ${BASH_SOURCE:0})"
 trap popd EXIT #*
 
-cmake --build $PROJECT_PATH/build
+cmake --build $PROJECT_PATH/build 
 
 echo "$0 done."

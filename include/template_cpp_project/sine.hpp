@@ -41,11 +41,11 @@ namespace template_cpp_project
 //* inputs:
 //* 1. f - frequency
 //* 2. t_arr - [T_DIM] input time array
-template <Uint_T T_DIM>
+template <size_t T_DIM>
 void
 sine(const Real_T f, const Real_T (&t_arr)[T_DIM], Real_T (&x_arr)[T_DIM])
 {
-	for (Uint_T i = 0; i < T_DIM; ++i) {
+	for (size_t i = 0; i < T_DIM; ++i) {
 #ifdef __USE_SINGLE_PRECISION__
 		x_arr[i] = sinf(t_arr[i] * 2 * M_PI * f);
 #else

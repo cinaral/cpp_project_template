@@ -2,7 +2,6 @@
 #include "template_cpp_project.hpp"
 #include <chrono>
 
-using Uint_T = template_cpp_project::Uint_T;
 using Real_T = template_cpp_project::Real_T;
 
 //* setup
@@ -14,7 +13,7 @@ const std::string ref_dat_prefix = ref_dat_dir + "/" + test_name + "-";
 const std::string t_arr_fname = "t_arr.dat";
 const std::string x_arr_fname = "x_arr.dat";
 
-constexpr Uint_T t_dim = 1000;
+constexpr size_t t_dim = 1000;
 constexpr Real_T f = 1;
 constexpr Real_T h = 1. / (t_dim - 1);
 
@@ -39,7 +38,7 @@ main()
 	Real_T t_arr[t_dim] = {};
 	Real_T x_arr[t_dim] = {};
 
-	for (Uint_T i = 0; i < t_dim; ++i) {
+	for (size_t i = 0; i < t_dim; ++i) {
 		t_arr[i] = i * h;
 	}
 
@@ -57,7 +56,7 @@ main()
 	Real_T t_max_error = 0.;
 	Real_T x_max_error = 0.;
 
-	for (Uint_T i = 0; i < t_dim; ++i) {
+	for (size_t i = 0; i < t_dim; ++i) {
 		Real_T t_error = std::abs(t_arr[i] - t_arr_chk[i]);
 
 		if (t_error > t_max_error) {
