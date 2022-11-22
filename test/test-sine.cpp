@@ -2,6 +2,7 @@
 #include "template_cpp_project.hpp"
 #include <chrono>
 
+using size_t = template_cpp_project::size_t;
 using Real_T = template_cpp_project::Real_T;
 
 //* setup
