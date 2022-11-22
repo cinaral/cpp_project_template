@@ -102,13 +102,13 @@ if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
 				${matrix_rw_SOURCE_DIR}/include
 				${matrix_op_SOURCE_DIR}/include
 			)
+			target_compile_options(
+				${ELEMENT}-test PRIVATE
+			)
 			add_test(
 				NAME ${ELEMENT}-test 
 				COMMAND ${ELEMENT}-test
 				WORKING_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
-			)
-			target_compile_options(
-				${ELEMENT}-test PRIVATE
 			)
 		endforeach(ELEMENT ${TEST_NAMES})
 	endif()
@@ -124,11 +124,11 @@ if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
 				${EXAMPLE_DIR}/${ELEMENT}.cpp						
 			)
 			target_include_directories(
-				${ELEMENT}-example  PRIVATE 
+				${ELEMENT}-example PRIVATE 
 				${INCLUDE_DIR}
 			)
 			target_compile_options(
-				${ELEMENT}-test PRIVATE
+				${ELEMENT}-example PRIVATE
 				-O0 #* optimization level
 			)
 		endforeach(ELEMENT ${EXAMPLE_NAMES})

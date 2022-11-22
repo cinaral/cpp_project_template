@@ -1,29 +1,3 @@
-/*
- * template_cpp_project
- *
- * MIT License
- *
- * Copyright (c) 2022 cinaral
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of
- * this software and associated documentation files (the "Software"), to deal in
- * the Software without restriction, including without limitation the rights to
- * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
- * of the Software, and to permit persons to whom the Software is furnished to do
- * so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
- */
-
 #ifndef TEST_CONFIG_HPP_CINARAL_221122_0839
 #define TEST_CONFIG_HPP_CINARAL_221122_0839
 
@@ -63,6 +37,7 @@ compute_max_error(const Real_T (&arr)[T_DIM * X_DIM], const Real_T (&arr_chk)[T_
 	for (size_t i = 0; i < T_DIM; ++i) {
 		const Real_T(&a)[X_DIM] = *matrix_op::select_row<T_DIM, X_DIM>(i, arr);
 		const Real_T(&a_chk)[X_DIM] = *matrix_op::select_row<T_DIM, X_DIM>(i, arr_chk);
+
 
 		for (size_t j = 0; j < X_DIM; ++j) {
 			const Real_T error = std::abs(a[j] - a_chk[j]);
