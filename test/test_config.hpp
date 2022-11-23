@@ -38,7 +38,6 @@ compute_max_error(const Real_T (&arr)[T_DIM * X_DIM], const Real_T (&arr_chk)[T_
 		const Real_T(&a)[X_DIM] = *matrix_op::select_row<T_DIM, X_DIM>(i, arr);
 		const Real_T(&a_chk)[X_DIM] = *matrix_op::select_row<T_DIM, X_DIM>(i, arr_chk);
 
-
 		for (size_t j = 0; j < X_DIM; ++j) {
 			const Real_T error = std::abs(a[j] - a_chk[j]);
 

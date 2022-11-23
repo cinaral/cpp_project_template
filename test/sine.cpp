@@ -1,13 +1,10 @@
 #include "test_config.hpp"
 
 //* setup
+using namespace test_config;
 const std::string test_name = "test-sine";
-const std::string dat_prefix = test_config::dat_dir + "/" + test_name + "-";
-const std::string ref_dat_prefix = test_config::ref_dat_dir + "/" + test_name + "-";
-
-constexpr size_t t_dim = 1000;
-constexpr Real_T f = 1;
-constexpr Real_T h = 1. / (t_dim - 1);
+const std::string dat_prefix = dat_dir + "/" + test_name + "-";
+const std::string ref_dat_prefix = ref_dat_dir + "/" + test_name + "-";
 
 #ifdef __USE_SINGLE_PRECISION__
 constexpr Real_T error_thres = 1e-6;
@@ -15,14 +12,18 @@ constexpr Real_T error_thres = 1e-6;
 constexpr Real_T error_thres = 1e-14;
 #endif
 
+constexpr size_t t_dim = 1000;
+constexpr Real_T f = 1;
+constexpr Real_T h = 1. / (t_dim - 1);
+
 int
 main()
 {
 	//* 1. read the reference data
 	Real_T t_arr_chk[t_dim];
 	Real_T x_arr_chk[t_dim];
-	matrix_rw::read<t_dim, 1>(ref_dat_prefix + test_config::t_arr_fname, t_arr_chk);
-	matrix_rw::read<t_dim, 1>(ref_dat_prefix + test_config::x_arr_fname, x_arr_chk);
+	matrix_rw::read<t_dim, 1>(ref_dat_prefix + t_arr_fname, t_arr_chk);
+	matrix_rw::read<t_dim, 1>(ref_dat_prefix + x_arr_fname, x_arr_chk);
 
 	//* 2. test
 	Real_T t_arr[t_dim];
@@ -33,15 +34,15 @@ main()
 	}
 	const auto start = std::chrono::high_resolution_clock::now();
 	template_cpp_project::sine(f, t_arr, x_arr); //* <--- testing
-	test_config::print_elapsed_since(start);
+	print_elapsed_since(start);
 
 	//* 3. write the test data
-	matrix_rw::write<t_dim, 1>(dat_prefix + test_config::t_arr_fname, t_arr);
-	matrix_rw::write<t_dim, 1>(dat_prefix + test_config::x_arr_fname, x_arr);
+	matrix_rw::write<t_dim, 1>(dat_prefix + t_arr_fname, t_arr);
+	matrix_rw::write<t_dim, 1>(dat_prefix + x_arr_fname, x_arr);
 
 	//* 4. verify the results
-	Real_T t_max_error = test_config::compute_max_error<t_dim, 1>(t_arr, t_arr_chk);
-	Real_T x_max_error = test_config::compute_max_error<t_dim, 1>(x_arr, x_arr_chk);
+	Real_T t_max_error = compute_max_error<t_dim, 1>(t_arr, t_arr_chk);
+	Real_T x_max_error = compute_max_error<t_dim, 1>(x_arr, x_arr_chk);
 
 	if (t_max_error < error_thres && x_max_error < error_thres) {
 		return 0;

@@ -43,7 +43,7 @@ if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
 
 	#* tests, examples, benchmarks to compile
 	set(TEST_NAMES
-		test-sine
+		sine
 	)
 	set(EXAMPLE_NAMES
 	)
