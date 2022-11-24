@@ -47,7 +47,7 @@
 	"type": "shell",
 	"presentation": {
 		"echo": true,
-		"clear": true,
+		"clear": false,
 		"reveal": "always",
 		"focus": true,
 		"panel": "shared",

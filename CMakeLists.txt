@@ -10,6 +10,7 @@ project(
 Include(FetchContent)
 
 set(matrix_rw_VERSION 1.0.2) #* matrix_rw, used for testing
+set(matrix_op_VERSION 1.0.3) #* matrix_op, used for testing
 
 if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
 	FetchContent_Declare(
@@ -17,6 +18,12 @@ if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
 		URL https://github.com/cinaral/matrix_rw/releases/download/v${matrix_rw_VERSION}/matrix_rw-src.zip
 	)
 	FetchContent_MakeAvailable(matrix_rw)
+
+	FetchContent_Declare(
+		matrix_op 
+		URL https://github.com/cinaral/matrix_op/releases/download/v${matrix_op_VERSION}/matrix_op-src.zip
+	)
+	FetchContent_MakeAvailable(matrix_op)
 endif()
 
 
@@ -36,7 +43,7 @@ if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
 
 	#* tests, examples, benchmarks to compile
 	set(TEST_NAMES
-		test-sine
+		sine
 	)
 	set(EXAMPLE_NAMES
 	)
@@ -86,19 +93,21 @@ if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
 
 		foreach(ELEMENT ${TEST_NAMES})
 			add_executable(
-				${ELEMENT} 
+				${ELEMENT}-test
 				${TEST_DIR}/${ELEMENT}.cpp						
 			)
-
 			target_include_directories(
-				${ELEMENT} PRIVATE 
+				${ELEMENT}-test PRIVATE 
 				${INCLUDE_DIR}
 				${matrix_rw_SOURCE_DIR}/include
+				${matrix_op_SOURCE_DIR}/include
 			)
-
+			target_compile_options(
+				${ELEMENT}-test PRIVATE
+			)
 			add_test(
-				NAME ${ELEMENT} 
-				COMMAND ${ELEMENT}
+				NAME ${ELEMENT}-test 
+				COMMAND ${ELEMENT}-test
 				WORKING_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
 			)
 		endforeach(ELEMENT ${TEST_NAMES})
@@ -111,19 +120,16 @@ if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
 
 		foreach(ELEMENT ${EXAMPLE_NAMES})
 			add_executable(
-				${ELEMENT} 
+				${ELEMENT}-example 
 				${EXAMPLE_DIR}/${ELEMENT}.cpp						
 			)
-
 			target_include_directories(
-				${ELEMENT} PRIVATE 
+				${ELEMENT}-example PRIVATE 
 				${INCLUDE_DIR}
 			)
-
-			add_test(
-				NAME ${ELEMENT} 
-				COMMAND ${ELEMENT}
-				WORKING_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
+			target_compile_options(
+				${ELEMENT}-example PRIVATE
+				-O0 #* optimization level
 			)
 		endforeach(ELEMENT ${EXAMPLE_NAMES})
 	endif()
@@ -135,17 +141,15 @@ if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
 
 		foreach(ELEMENT ${BENCHMARK_NAMES})
 			add_executable(
-				${ELEMENT} 
+				${ELEMENT}-benchmark
 				${BENCHMARK_DIR}/${ELEMENT}.cpp
 			)
-
 			target_include_directories(
-				${ELEMENT} PRIVATE 
+				${ELEMENT}-benchmark PRIVATE 
 				${INCLUDE_DIR}	
 			)
-
 			target_compile_options(
-				${ELEMENT} PRIVATE
+				${ELEMENT}-benchmark PRIVATE
 				-O3 #* optimization level
 				-m64 #* x64
 				-mavx2 #* enable avx2
