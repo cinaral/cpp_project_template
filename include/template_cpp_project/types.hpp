@@ -38,5 +38,4 @@ using Real_T = float;
 using Real_T = double;
 #endif
 } // namespace template_cpp_project
-
 #endif

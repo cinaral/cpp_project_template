@@ -2,8 +2,8 @@
 #include "template_cpp_project.hpp"
 #include <chrono>
 
-using size_t = template_cpp_project::size_t;
-using Real_T = template_cpp_project::Real_T;
+using template_cpp_project::size_t;
+using template_cpp_project::Real_T;
 
 //* setup
 const std::string dat_dir = "../dat";
