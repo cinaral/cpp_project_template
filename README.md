@@ -1,5 +1,5 @@
 # Template C++ Project
-This is my personal C++ project template.
+This is my personal C++ project template. I need reference solutions to test my programs occasionally, so this is template uses reference data to test. In this template the data was generated using MATLAB.
 
 # How to configure, compile and test with CMake
 You can use the included scripts:
