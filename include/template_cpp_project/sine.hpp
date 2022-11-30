@@ -36,11 +36,16 @@
 
 namespace template_cpp_project
 {
-//* generates a sine wave.
-//*
-//* inputs:
-//* 1. f - frequency
-//* 2. t_arr - [T_DIM] input time array
+/* Generates a sine wave.
+ *
+ * `sine(f, t_arr, OUT:x_arr)`
+ *
+ * 1. `f`: frequency
+ * 2. `t_arr`: [T_DIM] input time array
+ *
+ * OUT:
+ * 3. `x_arr`: [T_DIM] sine time array
+ */
 template <size_t T_DIM>
 void
 sine(const Real_T f, const Real_T (&t_arr)[T_DIM], Real_T (&x_arr)[T_DIM])

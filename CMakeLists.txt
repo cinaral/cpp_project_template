@@ -197,13 +197,6 @@ endif()
 #)
 
 
-##* force build type
-#if(NOT CMAKE_BUILD_TYPE)
-#    set(CMAKE_BUILD_TYPE "Debug" CACHE STRING
-#            "Default build type: Debug" FORCE)
-#endif()
-
-
 ##* set the number of CPUs 
 #include(ProcessorCount)
 #ProcessorCount(N)
