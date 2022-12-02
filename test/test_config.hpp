@@ -13,7 +13,6 @@ using template_cpp_project::size_t;
 
 namespace test_config
 {
-//* relative to the directory of the executable
 const std::string dat_dir = "../dat";                       //* temporary data directory
 const std::string ref_dat_dir = "../../test/reference_dat"; //* reference data directory
 const std::string t_arr_fname = "t_arr.dat";                //* file name for the time array

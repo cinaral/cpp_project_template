@@ -9,8 +9,8 @@ project(
 #* dependencies
 Include(FetchContent)
 
-set(matrix_rw_VERSION 1.0.2) #* matrix_rw, used for testing
-set(matrix_op_VERSION 1.0.3) #* matrix_op, used for testing
+set(matrix_rw_VERSION 1.0.3) #* matrix_rw, used for testing
+set(matrix_op_VERSION 1.0.5) #* matrix_op, used for testing
 
 if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
 	FetchContent_Declare(
@@ -206,13 +206,6 @@ endif()
 	#-fsanitize-undefined-trap-on-error #* report for sanitizers mentioned in comma-separated list of opts undefined behavior using __builtin_trap rather than a libubsan library routine
 	#-fstack-protector-strong #* stack guard, costs one write and read per function, needs canary
 #)
-
-
-##* force build type
-#if(NOT CMAKE_BUILD_TYPE)
-#    set(CMAKE_BUILD_TYPE "Debug" CACHE STRING
-#            "Default build type: Debug" FORCE)
-#endif()
 
 
 ##* set the number of CPUs 
