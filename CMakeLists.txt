@@ -29,10 +29,11 @@ endif()
 
 
 if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
-	option(SINGLE_PRECISION "Single precision" OFF)
+	option(DEBUG_BUILD "Build everything in debug mode" ON)
 	option(BUILD_TESTS "Build tests" ON)
 	option(BUILD_EXAMPLES "Build examples" ON)
-	option(BUILD_BENCHMARKS "Build bencmarks" ON)
+	option(BUILD_BENCHMARKS "Build benchmarks" ON)
+	option(SINGLE_PRECISION "Single precision" OFF)
 
 	#* where to look for the project header and source files
 	set(INCLUDE_DIR ${CMAKE_CURRENT_LIST_DIR}/include)
@@ -43,7 +44,7 @@ if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
 
 	#* tests, examples, benchmarks to compile
 	set(TEST_NAMES
-		sine
+		sine-test
 	)
 	set(EXAMPLE_NAMES
 	)
@@ -77,6 +78,17 @@ if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
 		-Wpedantic #* more warnings
 	)
 
+	if(DEBUG_BUILD)
+		add_compile_options(
+			-g #* debug symbols
+			-Og #* debug optimization
+		)
+	else()
+		add_compile_options(
+			-O3 #* release optimization
+		)
+	endif()
+
 	if(SINGLE_PRECISION)
 		add_compile_options(-D__USE_SINGLE_PRECISION__) #* use single precision floats
 	endif()
@@ -93,21 +105,21 @@ if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
 
 		foreach(ELEMENT ${TEST_NAMES})
 			add_executable(
-				${ELEMENT}-test
+				${ELEMENT}
 				${TEST_DIR}/${ELEMENT}.cpp						
 			)
 			target_include_directories(
-				${ELEMENT}-test PRIVATE 
+				${ELEMENT} PRIVATE 
 				${INCLUDE_DIR}
 				${matrix_rw_SOURCE_DIR}/include
 				${matrix_op_SOURCE_DIR}/include
 			)
 			target_compile_options(
-				${ELEMENT}-test PRIVATE
+				${ELEMENT} PRIVATE
 			)
 			add_test(
-				NAME ${ELEMENT}-test 
-				COMMAND ${ELEMENT}-test
+				NAME ${ELEMENT} 
+				COMMAND ${ELEMENT}
 				WORKING_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
 			)
 		endforeach(ELEMENT ${TEST_NAMES})
@@ -120,16 +132,15 @@ if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
 
 		foreach(ELEMENT ${EXAMPLE_NAMES})
 			add_executable(
-				${ELEMENT}-example 
+				${ELEMENT}
 				${EXAMPLE_DIR}/${ELEMENT}.cpp						
 			)
 			target_include_directories(
-				${ELEMENT}-example PRIVATE 
+				${ELEMENT} PRIVATE 
 				${INCLUDE_DIR}
 			)
 			target_compile_options(
-				${ELEMENT}-example PRIVATE
-				-O0 #* optimization level
+				${ELEMENT} PRIVATE
 			)
 		endforeach(ELEMENT ${EXAMPLE_NAMES})
 	endif()
@@ -141,16 +152,16 @@ if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
 
 		foreach(ELEMENT ${BENCHMARK_NAMES})
 			add_executable(
-				${ELEMENT}-benchmark
+				${ELEMENT}
 				${BENCHMARK_DIR}/${ELEMENT}.cpp
 			)
 			target_include_directories(
-				${ELEMENT}-benchmark PRIVATE 
+				${ELEMENT} PRIVATE 
 				${INCLUDE_DIR}	
 			)
 			target_compile_options(
-				${ELEMENT}-benchmark PRIVATE
-				-O3 #* optimization level
+				${ELEMENT} PRIVATE
+				-O3 #* optimization level, alternative: -Ofast (turns on ffast-math etc.)
 				-m64 #* x64
 				-mavx2 #* enable avx2
 				#-fno-math-errno #* disable errno 

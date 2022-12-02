@@ -2,9 +2,9 @@
 
 //* setup
 using namespace test_config;
-const std::string test_name = "sine";
-const std::string dat_prefix = dat_dir + "/" + test_name + "-test-";
-const std::string ref_dat_prefix = ref_dat_dir + "/" + test_name + "-test-";
+const std::string test_name = "sine-test";
+const std::string dat_prefix = dat_dir + "/" + test_name + "-";
+const std::string ref_dat_prefix = ref_dat_dir + "/" + test_name + "-";
 
 #ifdef __USE_SINGLE_PRECISION__
 constexpr Real_T error_thres = 1e-6;
