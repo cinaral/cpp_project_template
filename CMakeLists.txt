@@ -81,7 +81,7 @@ if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
 	if(DEBUG_BUILD)
 		add_compile_options(
 			-g #* debug symbols
-			-Og #* debug optimization
+			-O0 #* no optimization, -Og may work better with some debuggers
 		)
 	else()
 		add_compile_options(
@@ -129,7 +129,6 @@ if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
 	#* Examples *#
 	#************#
 	if(BUILD_EXAMPLES)
-
 		foreach(ELEMENT ${EXAMPLE_NAMES})
 			add_executable(
 				${ELEMENT}
@@ -149,7 +148,6 @@ if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
 	#* Benchmark *#
 	#*************#
 	if(BUILD_BENCHMARKS)
-
 		foreach(ELEMENT ${BENCHMARK_NAMES})
 			add_executable(
 				${ELEMENT}
