@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#* project relative path
+#* project's relative path with respect to this script
 PROJECT_PATH=../..
 CLEAR_DIR=$PROJECT_PATH/build
 #CLEAR_EXES=$PROJECT_PATH/*.exe

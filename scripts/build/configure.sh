@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#* project relative path
+#* project's relative path with respect to this script
 PROJECT_PATH=../..
 
 #* C/CXX compiler absolute path for MSYS2 on Windows
@@ -17,6 +17,7 @@ popd () {
 pushd "$(dirname ${BASH_SOURCE:0})"
 trap popd EXIT #*
 
+#* get current platform
 UNAME=$(uname)
 
 if [[ $UNAME == "Linux" ]] ; then
