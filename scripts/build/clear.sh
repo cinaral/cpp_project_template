@@ -5,17 +5,17 @@ PROJECT_PATH="../.."
 CLEAR_DIR="$PROJECT_PATH/build"
 #CLEAR_EXES=$PROJECT_PATH/*.exe
 
-#* hide popd and pushd stdout by redefining the commands
-popds () {	
-	command popd "$@" > /dev/null	
+#* Hide popd and pushd stdout by defining new commands.
+popdq () {
+	command popd "$@" > /dev/null
 }
-pushds () {	
-	command pushd "$@" > /dev/null	
+pushdq () {
+	command pushd "$@" > /dev/null
 }
-#* change the cwd to the script dir temporarily until the script exits for any reason
-#* (use BASH_SOURCE if it exists, otherwise fall back to $0)
-trap popds EXIT
-pushds "$(dirname ${BASH_SOURCE[0]:-$0})"
+#* Change the cwd to the script dir temporarily until the script exits for any reason.
+#* (If it exists use BASH_SOURCE, otherwise fall back to $0.)
+trap popdq EXIT
+pushdq "$(dirname ${BASH_SOURCE[0]:-$0})"
 
 #* remove dir
 if [[ -d "$CLEAR_DIR" ]]; then

@@ -3,17 +3,17 @@
 #* project's relative path with respect to this script
 PROJECT_PATH="../.."
 
-#* hide popd and pushd stdout by defining new commands
-popds () {	
-	command popd "$@" > /dev/null	
+#* Hide popd and pushd stdout by defining new commands.
+popdq () {
+	command popd "$@" > /dev/null
 }
-pushds () {	
-	command pushd "$@" > /dev/null	
+pushdq () {
+	command pushd "$@" > /dev/null
 }
-#* change the cwd to the script dir temporarily until the script exits for any reason
-#* (use BASH_SOURCE if it exists, otherwise fall back to $0)
-trap popds EXIT
-pushds "$(dirname ${BASH_SOURCE[0]:-$0})"
+#* Change the cwd to the script dir temporarily until the script exits for any reason.
+#* (If it exists use BASH_SOURCE, otherwise fall back to $0.)
+trap popdq EXIT
+pushdq "$(dirname ${BASH_SOURCE[0]:-$0})"
 
 cmake --build $PROJECT_PATH/build 
 
