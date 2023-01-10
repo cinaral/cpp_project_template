@@ -1,19 +1,21 @@
 #!/bin/bash
 
 #* project's relative path with respect to this script
-PROJECT_PATH=../..
-CLEAR_DIR=$PROJECT_PATH/build
+PROJECT_PATH="../.."
+CLEAR_DIR="$PROJECT_PATH/build"
 #CLEAR_EXES=$PROJECT_PATH/*.exe
 
-#*  change the cwd to the script dir temporarily, and hide pushd popd output
-pushd () { 
-	command pushd "$@" > /dev/null 
+#* hide popd and pushd stdout by redefining the commands
+popds () {	
+	command popd "$@" > /dev/null	
 }
-popd () { 
-	command popd "$@" > /dev/null 
+pushds () {	
+	command pushd "$@" > /dev/null	
 }
-pushd "$(dirname ${BASH_SOURCE:0})"
-trap popd EXIT #*
+#* change the cwd to the script dir temporarily until the script exits for any reason
+#* (use BASH_SOURCE if it exists, otherwise fall back to $0)
+trap popds EXIT
+pushds "$(dirname ${BASH_SOURCE[0]:-$0})"
 
 #* remove dir
 if [[ -d "$CLEAR_DIR" ]]; then

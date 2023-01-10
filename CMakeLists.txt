@@ -9,19 +9,19 @@ project(
 #* dependencies
 Include(FetchContent)
 
-set(matrix_rw_VERSION 1.0.3) #* matrix_rw, used for testing
-set(matrix_op_VERSION 1.0.5) #* matrix_op, used for testing
+set(matrix_rw_VERSION 1.0.4) #* matrix_rw, used for testing
+set(matrix_op_VERSION 1.0.6) #* matrix_op, used for testing
 
 if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
 	FetchContent_Declare(
 		matrix_rw 
-		URL https://github.com/cinaral/matrix_rw/releases/download/v${matrix_rw_VERSION}/matrix_rw-src.zip
+		URL https://github.com/cinaral/matrix_rw/releases/download/v${matrix_rw_VERSION}/src.zip
 	)
 	FetchContent_MakeAvailable(matrix_rw)
 
 	FetchContent_Declare(
 		matrix_op 
-		URL https://github.com/cinaral/matrix_op/releases/download/v${matrix_op_VERSION}/matrix_op-src.zip
+		URL https://github.com/cinaral/matrix_op/releases/download/v${matrix_op_VERSION}/src.zip
 	)
 	FetchContent_MakeAvailable(matrix_op)
 endif()

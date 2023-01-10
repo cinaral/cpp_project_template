@@ -7,15 +7,17 @@ PROJECT_PATH=../..
 C_COMPILER_PATH="/c/msys64/mingw64/bin/x86_64-w64-mingw32-gcc.exe"
 CXX_COMPILER_PATH="/c/msys64/mingw64/bin/x86_64-w64-mingw32-g++.exe"
 
-#*  change the cwd to the script dir temporarily, and hide pushd popd output
-pushd () { 
-	command pushd "$@" > /dev/null 
+#* hide popd and pushd stdout by defining new commands
+popds () {	
+	command popd "$@" > /dev/null	
 }
-popd () { 
-	command popd "$@" > /dev/null 
+pushds () {	
+	command pushd "$@" > /dev/null	
 }
-pushd "$(dirname ${BASH_SOURCE:0})"
-trap popd EXIT #*
+#* change the cwd to the script dir temporarily until the script exits for any reason
+#* (use BASH_SOURCE if it exists, otherwise fall back to $0)
+trap popds EXIT
+pushds "$(dirname ${BASH_SOURCE[0]:-$0})"
 
 #* get current platform
 UNAME=$(uname)
