@@ -51,7 +51,7 @@ void
 sine(const Real_T f, const Real_T (&t_arr)[T_DIM], Real_T (&x_arr)[T_DIM])
 {
 	for (size_t i = 0; i < T_DIM; ++i) {
-#ifdef __USE_SINGLE_PRECISION__
+#ifdef USE_SINGLE_PRECISION
 		x_arr[i] = sinf(t_arr[i] * 2 * M_PI * f);
 #else
 		x_arr[i] = sin(t_arr[i] * 2 * M_PI * f);

@@ -6,7 +6,7 @@ const std::string test_name = "sine-test";
 const std::string dat_prefix = dat_dir + "/" + test_name + "-";
 const std::string ref_dat_prefix = ref_dat_dir + "/" + test_name + "-";
 
-#ifdef __USE_SINGLE_PRECISION__
+#ifdef USE_SINGLE_PRECISION
 constexpr Real_T error_thres = 1e-6;
 #else
 constexpr Real_T error_thres = 1e-14;
