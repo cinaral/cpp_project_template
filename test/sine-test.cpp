@@ -1,6 +1,4 @@
 #include "test_config.hpp"
-#include <chrono>
-#include <cstdio>
 
 //* setup
 using namespace test_config;
@@ -56,7 +54,7 @@ main()
 		return 0;
 	} else {
 		std::cout << "t_max_error = " << t_max_error << std::endl;
-		std::cout << "x_max_error = " << t_max_error << std::endl;
+		std::cout << "x_max_error = " << x_max_error << std::endl;
 		return 1;
 	}
 }
