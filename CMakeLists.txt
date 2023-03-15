@@ -9,8 +9,8 @@ project(
 #* dependencies
 Include(FetchContent)
 
-set(matrix_rw_VERSION 1.0.4) #* matrix_rw, used for testing
-set(matrix_op_VERSION 1.0.6) #* matrix_op, used for testing
+set(matrix_rw_VERSION 1.0.5) #* matrix_rw, used for testing
+set(matrix_op_VERSION 1.0.7) #* matrix_op, used for testing
 
 if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
 	FetchContent_Declare(
@@ -33,7 +33,7 @@ if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
 	option(BUILD_TESTS "Build tests" ON)
 	option(BUILD_EXAMPLES "Build examples" ON)
 	option(BUILD_BENCHMARKS "Build benchmarks" ON)
-	option(SINGLE_PRECISION "Single precision" OFF)
+	option(USE_SINGLE_PRECISION "Use single precision floats" OFF)
 
 	#* where to look for the project header and source files
 	set(INCLUDE_DIR ${CMAKE_CURRENT_LIST_DIR}/include)
@@ -89,14 +89,25 @@ if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
 		)
 	endif()
 
-	if(SINGLE_PRECISION)
+	if(USE_SINGLE_PRECISION)
 		add_compile_options(-DUSE_SINGLE_PRECISION) #* use single precision floats
 	endif()
 
 	#***************#
 	#* Executables *#
 	#***************#
-
+	#add_executable(
+	#	main
+	#	${SRC_DIR}/main.cpp						
+	#)
+	#target_include_directories(
+	#	main PRIVATE 
+	#	${INCLUDE_DIR}
+	#)
+	#target_compile_options(
+	#	main PRIVATE
+	#)
+	
 	#***********#
 	#* Testing *#
 	#***********#

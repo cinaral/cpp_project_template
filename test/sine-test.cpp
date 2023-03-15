@@ -1,4 +1,6 @@
 #include "test_config.hpp"
+#include <chrono>
+#include <cstdio>
 
 //* setup
 using namespace test_config;
@@ -32,9 +34,15 @@ main()
 	for (size_t i = 0; i < t_dim; ++i) {
 		t_arr[i] = i * h;
 	}
-	const auto start = std::chrono::high_resolution_clock::now();
+
+	const auto start_tp = std::chrono::high_resolution_clock::now();
+
 	template_cpp_project::sine(f, t_arr, x_arr); //* <--- testing
-	print_elapsed_since(start);
+
+	const auto now_tp = std::chrono::high_resolution_clock::now();
+	const auto since_start_us =
+	    std::chrono::duration_cast<std::chrono::microseconds>(now_tp - start_tp);
+	printf("%zu us\n", since_start_us.count());
 
 	//* 3. write the test data
 	matrix_rw::write<t_dim, 1>(dat_prefix + t_arr_fname, t_arr);
