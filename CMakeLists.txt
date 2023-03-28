@@ -52,7 +52,7 @@ if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
 	)
 
 	#* source files
-	file (GLOB_RECURSE SOURCES CONFIGURE_DEPENDS "${SRC_DIR}/*.cpp")
+	file (GLOB_RECURSE SRC CONFIGURE_DEPENDS "${SRC_DIR}/*.cpp")
 
 	#* files to package
 	set(PACKAGE_FILES 
@@ -102,7 +102,7 @@ if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
 	add_executable(
 		main
 		${SRC_DIR}/main.cpp		
-		${SOURCES}					
+		#${SRC}					
 	)
 	target_include_directories(
 		main PRIVATE 
