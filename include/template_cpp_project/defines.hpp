@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2022 Cinar, A. L.
+ * Copyright (c) 2023 Cinar, A. L.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of
  * this software and associated documentation files (the "Software"), to deal in
@@ -24,8 +24,8 @@
  * SOFTWARE.
  */
 
-#ifndef TYPES_HPP_CINARAL_220926_2329
-#define TYPES_HPP_CINARAL_220926_2329
+#ifndef DEFINES_HPP_CINARAL_230331_1524
+#define DEFINES_HPP_CINARAL_230331_1524
 
 #include <cstddef>
 

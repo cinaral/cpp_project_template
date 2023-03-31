@@ -3,7 +3,7 @@
  *
  * MIT License
  *
- * Copyright (c) 2022 Cinar, A. L.
+ * Copyright (c) 2023 Cinar, A. L.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of
  * this software and associated documentation files (the "Software"), to deal in
@@ -27,7 +27,7 @@
 #ifndef TEMPLATE_CPP_PROJECT_HPP_CINARAL_220923_1707
 #define TEMPLATE_CPP_PROJECT_HPP_CINARAL_220923_1707
 
-#include "template_cpp_project/types.hpp"
+#include "template_cpp_project/defines.hpp"
 #include "template_cpp_project/sine.hpp"
 
 #endif
