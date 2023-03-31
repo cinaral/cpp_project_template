@@ -177,8 +177,6 @@ if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
 				-O3 #* optimization level, alternative: -Ofast (turns on ffast-math etc.)
 				-m64 #* x64
 				-mavx2 #* enable avx2
-				#-fno-math-errno #* disable errno 
-				#-ffast-math #* feeling brave?
 			)
 		endforeach(ELEMENT ${BENCHMARK_NAMES})
 	endif()
