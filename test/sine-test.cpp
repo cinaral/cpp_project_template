@@ -20,10 +20,10 @@ int
 main()
 {
 	//* 1. read the reference data
-	Real_T t_arr_chk[t_dim];
-	Real_T x_arr_chk[t_dim];
-	matrix_rw::read<t_dim, 1>(ref_dat_prefix + t_arr_fname, t_arr_chk);
-	matrix_rw::read<t_dim, 1>(ref_dat_prefix + x_arr_fname, x_arr_chk);
+	Real_T t_arr_ref[t_dim];
+	Real_T x_arr_ref[t_dim];
+	matrix_rw::read<t_dim, 1>(ref_dat_prefix + t_arr_fname, t_arr_ref);
+	matrix_rw::read<t_dim, 1>(ref_dat_prefix + x_arr_fname, x_arr_ref);
 
 	//* 2. test
 	Real_T t_arr[t_dim];
@@ -47,14 +47,14 @@ main()
 	matrix_rw::write<t_dim, 1>(dat_prefix + x_arr_fname, x_arr);
 
 	//* 4. verify the results
-	Real_T t_max_error = compute_max_error<t_dim, 1>(t_arr, t_arr_chk);
-	Real_T x_max_error = compute_max_error<t_dim, 1>(x_arr, x_arr_chk);
+	Real_T t_max_error = compute_max_error<t_dim, 1>(t_arr, t_arr_ref);
+	Real_T x_max_error = compute_max_error<t_dim, 1>(x_arr, x_arr_ref);
 
 	if (t_max_error < error_thres && x_max_error < error_thres) {
 		return 0;
 	} else {
-		std::cout << "t_max_error = " << t_max_error << std::endl;
-		std::cout << "x_max_error = " << x_max_error << std::endl;
+		printf("t_max_error = %.3g\n", t_max_error);
+		printf("x_max_error = %.3g\n", x_max_error);
 		return 1;
 	}
 }

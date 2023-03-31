@@ -52,7 +52,7 @@ if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
 	)
 
 	#* source files
-	file (GLOB_RECURSE SOURCES CONFIGURE_DEPENDS "${SRC_DIR}/*.cpp")
+	file (GLOB_RECURSE SRC CONFIGURE_DEPENDS "${SRC_DIR}/*.cpp")
 
 	#* files to package
 	set(PACKAGE_FILES 
@@ -102,7 +102,7 @@ if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
 	add_executable(
 		main
 		${SRC_DIR}/main.cpp		
-		${SOURCES}					
+		#${SRC}					
 	)
 	target_include_directories(
 		main PRIVATE 
@@ -177,8 +177,6 @@ if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
 				-O3 #* optimization level, alternative: -Ofast (turns on ffast-math etc.)
 				-m64 #* x64
 				-mavx2 #* enable avx2
-				#-fno-math-errno #* disable errno 
-				#-ffast-math #* feeling brave?
 			)
 		endforeach(ELEMENT ${BENCHMARK_NAMES})
 	endif()

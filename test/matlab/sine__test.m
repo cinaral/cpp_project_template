@@ -21,11 +21,11 @@ else
 end
 
 %* create reference data 
-t_arr_chk = linspace(0, 1, t_dim).';
-x_arr_chk = sin(t_arr_chk * 2 * pi * f);
+t_arr_ref = linspace(0, 1, t_dim).';
+x_arr_ref = sin(t_arr_ref * 2 * pi * f);
 
-writematrix(t_arr_chk, append(ref_dat_prefix, t_arr_fname));  
-writematrix(x_arr_chk, append(ref_dat_prefix, x_arr_fname));  
+writematrix(t_arr_ref, append(ref_dat_prefix, t_arr_fname));  
+writematrix(x_arr_ref, append(ref_dat_prefix, x_arr_fname));  
 
 disp(append('Created reference data for ', test_name));
 
@@ -42,11 +42,11 @@ if isfile(exe_name)
 	x_arr = readmatrix(append(dat_prefix, x_arr_fname));
 
 	%* verify
-	t_max_error = max(t_arr - t_arr_chk);
-	t_mean_error = mean(t_arr - t_arr_chk);
+	t_max_error = max(t_arr - t_arr_ref);
+	t_mean_error = mean(t_arr - t_arr_ref);
 
-	x_max_error = max(vecnorm(x_arr - x_arr_chk, 2, 2));
-	x_mean_error = mean(vecnorm(x_arr - x_arr_chk, 2, 2));
+	x_max_error = max(vecnorm(x_arr - x_arr_ref, 2, 2));
+	x_mean_error = mean(vecnorm(x_arr - x_arr_ref, 2, 2));
 
 	if x_max_error < error_thres
 		disp(append(test_name, '	ok'));
@@ -58,7 +58,7 @@ if isfile(exe_name)
 		figure('Name', 'test-sine x_arr');
 		hold on;
 		plot(t_arr, x_arr);
-		plot(t_arr_chk, x_arr_chk, '--');
+		plot(t_arr_ref, x_arr_ref, '--');
 	end
 else
 	error(append(bin_dir, '/', exe_name, ' does not exist. Use CMake to build the test.'));
