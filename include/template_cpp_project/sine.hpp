@@ -48,13 +48,13 @@ namespace template_cpp_project
  */
 template <size_t T_DIM>
 void
-sine(const Real_T f, const Real_T (&t_arr)[T_DIM], Real_T (&x_arr)[T_DIM])
+sine(const Real_T f, const Real_T (&t_arr)[T_DIM][1], Real_T (&x_arr)[T_DIM][1])
 {
 	for (size_t i = 0; i < T_DIM; ++i) {
 #ifdef USE_SINGLE_PRECISION
-		x_arr[i] = sinf(t_arr[i] * 2 * M_PI * f);
+		x_arr[i][0] = sinf(t_arr[i][0] * 2 * M_PI * f);
 #else
-		x_arr[i] = sin(t_arr[i] * 2 * M_PI * f);
+		x_arr[i][0] = sin(t_arr[i][0] * 2 * M_PI * f);
 #endif
 	}
 }

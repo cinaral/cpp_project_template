@@ -9,7 +9,7 @@ project(
 #* dependencies
 Include(FetchContent)
 
-set(matrix_rw_VERSION 1.0.5) #* matrix_rw, used for testing
+set(matrix_rw_VERSION 1.1.0) #* matrix_rw, used for testing
 set(matrix_op_VERSION 1.0.7) #* matrix_op, used for testing
 
 if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
