@@ -1,20 +1,22 @@
-# Template C++ Project
-This is my personal C++ project template. I need reference solutions to test my programs occasionally, so this template uses reference data, which was generated using MATLAB.
+# C++ Project Template
+This is my C++ project template. I frequently need reference trajectories to test, so this template alse uses reference data, generated using MATLAB.
 
 # How to configure, compile and test with CMake
-You can use the included scripts:
+Install CMake and the build tools if you need to:
 ```bash
-cd scripts/build
-./clear.sh
-./configure.sh
-./build.sh
-./test.sh
+sudo apt-get update
+sudo apt-get install cmake
+sudo apt-get install build-essential
+```
+Use the provided scripts or the VS Code tasks to configure, build and test:
+```bash
+./scripts/build/clear.sh
+./scripts/build/configure.sh
+./scripts/build/build.sh
+./scripts/build/test.sh
 ```
 
 # How to compile on Windows using VS Code and MSYS2
-1. Install MSYS2 and add to path.
+1. Install MSYS2, and add to path.
 2. Install mingw-w64 toolchain using MSYS2, ```pacman -S --needed base-devel mingw-w64-x86_64-toolchain```.
 3. Use the build tasks, ```ctrl + shift + B```.
-
-# To do
-- Simplify template

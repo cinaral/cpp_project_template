@@ -1,5 +1,5 @@
 /*
- * template_cpp_project
+ * cpp_project_template
  *
  * MIT License
  *
@@ -29,36 +29,31 @@
 
 #include "types.hpp"
 #include <cmath>
+#include <cstdio>
 
 #ifndef M_PI
 	#define M_PI 3.14159265358979323846
 #endif
 
-namespace template_cpp_project
+namespace cpp_project_template
 {
-/* Generates a sine wave.
- *
- * `sine(f, t_arr, OUT:x_arr)`
- *
- * 1. `f`: frequency
- * 2. `t_arr`: [T_DIM] input time array
- *
- * OUT:
- * 3. `x_arr`: [T_DIM] sine time array
+/* ```make_signal<S>(base_freq, signal)```
+ * Generates a signal with `S` sine waves but with a twist
  */
-template <size_t T_DIM>
+template <Size S>
 void
-sine(const Real_T f, const Real_T (&t_arr)[T_DIM][1], Real_T (&x_arr)[T_DIM][1])
+make_signal(const std::vector<std::array<Real, 1>> &t_arr, std::vector<std::array<Real, S>> &x_arr,
+            const Real base_freq = 1.0)
 {
-	for (size_t i = 0; i < T_DIM; ++i) {
-#ifdef USE_SINGLE_PRECISION
-		x_arr[i][0] = sinf(t_arr[i][0] * 2 * M_PI * f);
-#else
-		x_arr[i][0] = sin(t_arr[i][0] * 2 * M_PI * f);
-#endif
+	const Size t_dim = t_arr.size();
+
+	for (Size i = 0; i < t_dim; ++i) {
+		for (Size j = 0; j < S; ++j) {
+			x_arr[i][j] = sin(pow(t_arr[i][0], j) * 2 * M_PI * base_freq);
+		}
 	}
 }
 
-} // namespace template_cpp_project
+} // namespace cpp_project_template
 
 #endif

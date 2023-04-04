@@ -1,5 +1,5 @@
 /*
- * template_cpp_project
+ * cpp_project_template
  *
  * MIT License
  *
@@ -24,18 +24,10 @@
  * SOFTWARE.
  */
 
-#ifndef TYPES_HPP_CINARAL_220926_2329
-#define TYPES_HPP_CINARAL_220926_2329
+#ifndef CPP_PROJECT_TEMPLATE_HPP_CINARAL_220923_1707
+#define CPP_PROJECT_TEMPLATE_HPP_CINARAL_220923_1707
 
-#include <cstddef>
+#include "cpp_project_template/make_signal.hpp"
+#include "cpp_project_template/types.hpp"
 
-namespace template_cpp_project
-{
-using size_t = std::size_t;
-#ifdef USE_SINGLE_PRECISION
-using Real_T = float;
-#else
-using Real_T = double;
-#endif
-} // namespace template_cpp_project
 #endif

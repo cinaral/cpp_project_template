@@ -1,5 +1,5 @@
 /*
- * template_cpp_project
+ * cpp_project_template
  *
  * MIT License
  *
@@ -24,10 +24,20 @@
  * SOFTWARE.
  */
 
-#ifndef TEMPLATE_CPP_PROJECT_HPP_CINARAL_220923_1707
-#define TEMPLATE_CPP_PROJECT_HPP_CINARAL_220923_1707
+#ifndef TYPES_HPP_CINARAL_220926_2329
+#define TYPES_HPP_CINARAL_220926_2329
 
-#include "template_cpp_project/types.hpp"
-#include "template_cpp_project/sine.hpp"
+#include <array>
+#include <cstddef>
+#include <vector>
 
+namespace cpp_project_template
+{
+using Size = std::size_t;
+#ifdef USE_SINGLE_PRECISION
+using Real_T = float;
+#else
+using Real = double;
+#endif
+} // namespace cpp_project_template
 #endif
