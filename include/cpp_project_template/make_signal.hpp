@@ -49,7 +49,7 @@ make_signal(const std::vector<std::array<Real, 1>> &t_arr, std::vector<std::arra
 
 	for (Size i = 0; i < t_dim; ++i) {
 		for (Size j = 0; j < S; ++j) {
-			x_arr[i][j] = sin(pow(t_arr[i][0], j) * 2 * M_PI * base_freq);
+			x_arr[i][j] = sin(pow(t_arr[i][0], (j + 1)) * 2 * M_PI * base_freq);
 		}
 	}
 }

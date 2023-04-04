@@ -35,7 +35,7 @@ namespace cpp_project_template
 {
 using Size = std::size_t;
 #ifdef USE_SINGLE_PRECISION
-using Real_T = float;
+using Real = float;
 #else
 using Real = double;
 #endif

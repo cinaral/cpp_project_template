@@ -9,7 +9,7 @@ project(
 #* dependencies
 Include(FetchContent)
 
-set(matrix_rw_VERSION 1.2.0) #* matrix_rw, used for testing
+set(matrix_rw_VERSION 1.2.1) #* matrix_rw, used for testing
 
 if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
 	FetchContent_Declare(
@@ -37,16 +37,16 @@ if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
 
 	#* tests, examples, benchmarks to compile
 	set(TEST_NAMES
-		#sine_test
+		example_test
 	)
 	set(EXAMPLE_NAMES
-		sine_example
+		example
 	)
 	set(BENCHMARK_NAMES
 	)
 
 	#* source files
-	file (GLOB_RECURSE SRC CONFIGURE_DEPENDS "${SRC_DIR}/*.cpp")
+	file (GLOB_RECURSE CPP_PROJECT_TEMPLATE_SRC CONFIGURE_DEPENDS "${SRC_DIR}/cpp_project_template/*.cpp")
 
 	#* files to package
 	set(PACKAGE_FILES 
@@ -95,8 +95,7 @@ if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
 	#***************#
 	add_executable(
 		main
-		${SRC_DIR}/main.cpp		
-		#${SRC}					
+		${CPP_PROJECT_TEMPLATE_SRC}					
 	)
 	target_include_directories(
 		main PRIVATE 
