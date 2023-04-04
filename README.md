@@ -1,5 +1,5 @@
 # C++ Project Template
-This is my C++ project template. I frequently need reference trajectories to test, so this template alse uses reference data, generated using MATLAB.
+This is my C++ project template. I frequently need reference trajectories to test, so this template alse uses reference data, in this instance it is generated using MATLAB.
 
 # How to configure, compile and test with CMake
 Install CMake and the build tools if you need to:
