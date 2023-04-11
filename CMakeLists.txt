@@ -19,6 +19,8 @@ if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
 	FetchContent_MakeAvailable(matrix_rw)
 endif()
 
+find_package (Eigen3 3.3 REQUIRED)
+
 
 
 if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
@@ -103,6 +105,9 @@ if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
 	)
 	target_compile_options(
 		main PRIVATE
+	)
+	target_link_libraries(main PRIVATE 
+		Eigen3::Eigen
 	)
 	
 	#***********#
