@@ -27,7 +27,7 @@
 #ifndef SINE_HPP_CINARAL_220923_1711
 #define SINE_HPP_CINARAL_220923_1711
 
-#include "defines.hpp"
+#include "types.hpp"
 #include <cmath>
 #include <cstdio>
 
