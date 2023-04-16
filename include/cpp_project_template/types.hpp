@@ -27,9 +27,7 @@
 #ifndef TYPES_HPP_CINARAL_220926_2329
 #define TYPES_HPP_CINARAL_220926_2329
 
-#include <array>
 #include <cstddef>
-#include <vector>
 
 namespace cpp_project_template
 {
