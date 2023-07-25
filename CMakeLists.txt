@@ -1,4 +1,5 @@
-cmake_minimum_required(VERSION 3.13)
+cmake_minimum_required(VERSION 3.20)
+cmake_policy(SET CMP0135 NEW)
 
 project(
 	template_cpp_project
