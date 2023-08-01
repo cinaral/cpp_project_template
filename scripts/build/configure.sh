@@ -24,7 +24,7 @@ UNAME=$(uname)
 
 if [[ $UNAME == "Linux" ]] ; then
 	cmake -S $PROJECT_PATH/ -B $PROJECT_PATH/build -DCMAKE_EXPORT_COMPILE_COMMANDS=1
-elif [[ $UNAME == "MSYS"* ]] ; then
+elif [[ $UNAME == "MSYS"* || $UNAME == "MINGW"* ]] ; then
 	cmake -S $PROJECT_PATH/ -B $PROJECT_PATH/build -DCMAKE_EXPORT_COMPILE_COMMANDS=1 --no-warn-unused-cli -DCMAKE_C_COMPILER:FILEPATH=$C_COMPILER_PATH -DCMAKE_CXX_COMPILER:FILEPATH=$CXX_COMPILER_PATH -G "MinGW Makefiles"
 fi
 
