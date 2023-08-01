@@ -1,5 +1,8 @@
 cmake_minimum_required(VERSION 3.20)
-cmake_policy(SET CMP0135 NEW)
+
+if (${CMAKE_VERSION} VERSION_GREATER "3.27")
+	cmake_policy(SET CMP0135 NEW)
+endif()
 
 project(
 	template_cpp_project
