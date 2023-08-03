@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.20)
 
-if (${CMAKE_VERSION} VERSION_GREATER "3.27")
+if (${CMAKE_VERSION} VERSION_GREATER_EQUAL "3.27")
 	cmake_policy(SET CMP0135 NEW)
 endif()
 
