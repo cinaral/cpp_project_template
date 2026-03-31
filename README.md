@@ -25,7 +25,7 @@ Use the provided scripts or the VS Code tasks to configure, build and test:
 
 # License
 ```
-Copyright 2026 Cinar A. L.
+Copyright (C) 2026 Cinar A. L.
 
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 3 of the License.
 
