@@ -1,3 +1,7 @@
+/* Copyright 2026, Cinar, A. L.
+ * SPDX-License-Identifier: GPL-3.0-only
+ */
+ 
 #include <Eigen/Dense>
 #include <iostream>
 

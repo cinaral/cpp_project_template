@@ -1,3 +1,6 @@
+%* Copyright 2026, Cinar, A. L.
+%* SPDX-License-Identifier: GPL-3.0-only
+
 %** setup *%
 test_name = 'example_test';
 bin_fprefix = '../../build/bin';

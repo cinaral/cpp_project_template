@@ -1,3 +1,7 @@
+/* Copyright 2026, Cinar, A. L.
+ * SPDX-License-Identifier: GPL-3.0-only
+ */
+ 
 #include <cpp_project_template.hpp>
 #include <matrix_rw.hpp>
 

@@ -1,7 +1,7 @@
-/* Copyright 2022-2023, Cinar, A. L.
- * SPDX-License-Identifier: MIT
+/* Copyright 2026, Cinar, A. L.
+ * SPDX-License-Identifier: GPL-3.0-only
  */
-
+ 
 #ifndef DEFINES_HPP_CINARAL_230331_1524
 #define DEFINES_HPP_CINARAL_230331_1524
 

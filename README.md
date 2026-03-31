@@ -1,5 +1,5 @@
 # C++ Project Template
-This is my C++ project template. I frequently need reference trajectories to test, so this template alse uses reference data, in this instance it is generated using MATLAB.
+This is my C++ project template, which uses reference data (e.g. generated using MATLAB) for testing.
 
 # How to configure, compile and test with CMake
 Install the build tools if you need to:
@@ -21,4 +21,15 @@ Use the provided scripts or the VS Code tasks to configure, build and test:
 ./scripts/build/configure.sh
 ./scripts/build/build.sh
 ./scripts/build/test.sh
+```
+
+# License
+```
+Copyright 2026 Cinar A. L.
+
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 3 of the License.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with this program. If not, see <https://www.gnu.org/licenses/>. 
 ```

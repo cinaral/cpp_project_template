@@ -1,3 +1,6 @@
+# Copyright 2026, Cinar, A. L.
+# SPDX-License-Identifier: GPL-3.0-only
+
 cmake_minimum_required(VERSION 3.20)
 
 if (${CMAKE_VERSION} VERSION_GREATER_EQUAL "3.27")
@@ -10,10 +13,10 @@ project(
 	LANGUAGES CXX
 )
 
-#* dependencies
+# dependencies
 Include(FetchContent)
 
-set(matrix_rw_VERSION 1.2.1) #* matrix_rw, used for testing
+set(matrix_rw_VERSION 1.2.1) # matrix_rw, used for testing
 
 if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
 	FetchContent_Declare(
@@ -34,14 +37,14 @@ if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
 	option(BUILD_BENCHMARKS "Build benchmarks" ON)
 	option(USE_SINGLE_PRECISION "Use single precision floats" OFF)
 
-	#* where to look for the project header and source files
+	# where to look for the project header and source files
 	set(INCLUDE_DIR ${CMAKE_CURRENT_LIST_DIR}/include)
 	set(SRC_DIR ${CMAKE_CURRENT_LIST_DIR}/src)
 	set(TEST_DIR ${CMAKE_CURRENT_LIST_DIR}/test)
 	set(EXAMPLE_DIR ${CMAKE_CURRENT_LIST_DIR}/examples)
 	set(BENCHMARK_DIR ${CMAKE_CURRENT_LIST_DIR}/benchmarks)
 
-	#* tests, examples, benchmarks to compile
+	# tests, examples, benchmarks to compile
 	set(TEST_NAMES
 		example_test
 	)
@@ -51,10 +54,10 @@ if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
 	set(BENCHMARK_NAMES
 	)
 
-	#* source files
+	# source files
 	file (GLOB_RECURSE CPP_PROJECT_TEMPLATE_SRC CONFIGURE_DEPENDS "${SRC_DIR}/cpp_project_template/*.cpp")
 
-	#* files to package
+	# files to package
 	set(PACKAGE_FILES 
 		include/${PROJECT_NAME}/
 		include/${PROJECT_NAME}.hpp 
@@ -62,38 +65,38 @@ if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
 		LICENSE
 	)
 
-	#* set up output directories
+	# set up output directories
 	set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 	set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 	set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 	file(MAKE_DIRECTORY ${CMAKE_BINARY_DIR}/data)
 
-	#* project compile options
+	# project compile options
 	set(CMAKE_CXX_STANDARD 17)
 	set(CMAKE_CXX_STANDARD_REQUIRED ON)
 	set(CMAKE_CXX_EXTENSIONS OFF)
 
 	add_compile_options(
-		-fdiagnostics-color=always #* colored debug output
-		-fmessage-length=0 #* disable line wrapping (default=72 char) 
-		-Wall #* all warnings
-		-Wextra #* more warnings
-		-Wpedantic #* more warnings
+		-fdiagnostics-color=always # colored debug output
+		-fmessage-length=0 # disable line wrapping (default=72 char) 
+		-Wall # all warnings
+		-Wextra # more warnings
+		-Wpedantic # more warnings
 	)
 
 	if(DEBUG_BUILD)
 		add_compile_options(
-			-g #* debug symbols
-			-O0 #* no optimization, -Og may work better with some debuggers
+			-g # debug symbols
+			-O0 # no optimization, -Og may work better with some debuggers
 		)
 	else()
 		add_compile_options(
-			-O3 #* release optimization
+			-O3 # release optimization
 		)
 	endif()
 
 	if(USE_SINGLE_PRECISION)
-		add_compile_options(-DUSE_SINGLE_PRECISION) #* use single precision floats
+		add_compile_options(-DUSE_SINGLE_PRECISION) # use single precision floats
 	endif()
 
 	#***************#
@@ -176,9 +179,9 @@ if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
 			)
 			target_compile_options(
 				${ELEMENT} PRIVATE
-				-O3 #* optimization level, alternative: -Ofast (turns on ffast-math etc.)
-				-m64 #* x64
-				-mavx2 #* enable avx2
+				-O3 # optimization level, alternative: -Ofast (turns on ffast-math etc.)
+				-m64 # x64
+				-mavx2 # enable avx2
 			)
 		endforeach(ELEMENT ${BENCHMARK_NAMES})
 	endif()

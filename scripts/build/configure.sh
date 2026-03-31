@@ -1,4 +1,8 @@
 #!/bin/bash
+
+# Copyright 2026, Cinar, A. L.
+# SPDX-License-Identifier: GPL-3.0-only
+
 # Hide popd and pushd stdout by defining new commands.
 popdq () {
 	command popd "$@" > /dev/null
