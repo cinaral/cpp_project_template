@@ -1,7 +1,7 @@
 # Copyright 2026, Cinar, A. L.
 # SPDX-License-Identifier: GPL-3.0-only
 
-cmake_minimum_required(VERSION 3.20)
+cmake_minimum_required(VERSION 3.21)
 
 if (${CMAKE_VERSION} VERSION_GREATER_EQUAL "3.27")
 	cmake_policy(SET CMP0135 NEW)
@@ -18,7 +18,7 @@ Include(FetchContent)
 
 set(matrix_rw_VERSION 1.2.1) # matrix_rw, used for testing
 
-if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
+if(PROJECT_IS_TOP_LEVEL)
 	FetchContent_Declare(
 		matrix_rw 
 		URL https://github.com/cinaral/matrix_rw/releases/download/v${matrix_rw_VERSION}/src.zip
@@ -26,11 +26,11 @@ if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
 	FetchContent_MakeAvailable(matrix_rw)
 endif()
 
-find_package (Eigen3 3.3 REQUIRED)
+find_package(Eigen3 3.3 REQUIRED)
 
 
 
-if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
+if(PROJECT_IS_TOP_LEVEL)
 	option(DEBUG_BUILD "Build everything in debug mode" ON)
 	option(BUILD_TESTS "Build tests" ON)
 	option(BUILD_EXAMPLES "Build examples" ON)
