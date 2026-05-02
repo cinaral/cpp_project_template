@@ -79,20 +79,45 @@ if(PROJECT_IS_TOP_LEVEL)
 	add_compile_options(
 		-fdiagnostics-color=always # colored debug output
 		-fmessage-length=0 # disable line wrapping (default=72 char) 
+		-pipe # avoid temporary files
+	)
+
+	# warnings:
+	# https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html
+	# https://gcc.gnu.org/onlinedocs/gcc/C_002b_002b-Dialect-Options.html
+	add_compile_options(
 		-Wall # all warnings
 		-Wextra # more warnings
-		-Wpedantic # more warnings
+		-Wpedantic # MORE warnings
+		-Wconversion # warn for implicit conversions 
+		-Wsign-conversion # warn for implicity conversion of signed/unsigned ints
+		-Wcast-qual # "Warn whenever a pointer is cast so as to remove a type qualifier from the target type"
+		-Wformat=2 # check calls to printf and scanf etc make sense (equivalent to -Wformat -Wformat-nonliteral -Wformat-security -Wformat-y2k)
+		-Wundef # warn for undefined identifiers in #if directives
+		-Werror=float-equal # turn float equality comparisons to errors
+		-Wshadow # warn for all instances of shadowing of another variable, parameter, type, class member
+		-Wcast-align # warn for pointer cast alignment mismatch
+		-Wunused # warn for unused (-Wall implies this already)
+		-Wnull-dereference # warn for undefined dereferencing a null pointer
+		-Wdouble-promotion # warn if float is implicitly promoted to double
+		-Wimplicit-fallthrough # warn for switch case fallthrough
+		-Wextra-semi # warn about redundant semicolons
+		-Woverloaded-virtual # warn when a function declaration hides virtual functions from a base class
+		-Wnon-virtual-dtor # warn when a class is possible to but unsafe to delete and instance of derived class
+		-Wold-style-cast # warn if C-style cast to non-void type is used in C++
 	)
 
 	if(DEBUG_BUILD)
 		add_compile_options(
-			-g # debug symbols
 			-O0 # no optimization, -Og may work better with some debuggers
+			-g # debug symbols
+			-grecord-gcc-switches # store compiler flags in debugging information
 		)
 	else()
 		add_compile_options(
 			-O3 # release optimization
-		)
+			-fhardened # equivalent to: (-D_FORTIFY_SOURCE=3	-D_GLIBCXX_ASSERTIONS -ftrivial-auto-var-init=zero -fPIE  -pie  -Wl,-z,relro,-z,now				-fstack-protector-strong -fstack-clash-protection -fcf-protection=full (x86 GNU/Linux only)) https://gcc.gnu.org/onlinedocs/gcc/Instrumentation-Options.html 	
+			)
 	endif()
 
 	if(USE_SINGLE_PRECISION)

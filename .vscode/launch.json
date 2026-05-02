@@ -1,6 +1,7 @@
 {
 	"configurations": [
 		//* if you want to use gdb:
+
 		{
 			"name": "gdb",
 			"type": "cppdbg",
@@ -8,26 +9,26 @@
 			"program": "${workspaceFolder}\\build\\bin\\${fileBasenameNoExtension}.exe",
 			"cwd": "${workspaceFolder}\\build\\bin",
 			//"preLaunchTask": "Build"
+			//"stopOnEntry": true
 		}
 
-		//* if you want to use lldb:
+		//* if you want to use lldb, you need the lldb extension:
 
 		//{
-		//	"name": "Launch",
+		//	"name": "lldb",
 		//	"type": "lldb",
 		//	"request": "launch",
-		//	"program": "${workspaceFolder}\\main.exe",
-		//	//"args": [],
-		//	//"cwd": "${workspaceFolder}\\build\\bin\\",
-		//	//"preRunCommands": ["breakpoint set -f ${workspaceFolder}\\build\\bin\\${fileBasenameNoExtension}.exe -l 8"],
-		//	//"environment": [],
-		//	//"MIMode": "lldb",
-		//	//"miDebuggerPath": "C:\\msys64\\mingw64\\bin\\lldb.exe",
-		//	//"preLaunchTask": "Build",
-		//	//"stopOnEntry": true
+		//	"program": "${workspaceFolder}\\build\\bin\\${fileBasenameNoExtension}.exe",
+		//	"cwd": "${workspaceFolder}\\build\\bin\\",
+		//	"args": [],
+		//	"preRunCommands": ["breakpoint set -f ${workspaceFolder}\\build\\bin\\${fileBasenameNoExtension}.exe -l 8"],
+		//	"environment": [],
+		//	"MIMode": "lldb",
+		//	"miDebuggerPath": "C:\\msys64\\mingw64\\bin\\lldb.exe",
 		//}
 		
 		//* if you want to use MSVC:
+
 		//{
 		//	"name": "cl.exe",
 		//	"type": "cppvsdbg",
